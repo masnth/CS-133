@@ -4,6 +4,8 @@
 #include <string>
 #include <datetimeapi.h>
 
+using namespace std;
+
 namespace HN_DATETIME {
 	class Comparable{
 	public:
@@ -18,6 +20,18 @@ namespace HN_DATETIME {
 	};
 
 	class Date: virtual public Comparable {
-	
+	public:
+		static const short minYear;;
+		static const std::string startDay;
+		static const short MIY;
+		static const short DIW;
+
+
+	protected:
+		short year;
+		short month;
+		short dayOfMonth;
+		short dayOfYear;
+		short dayOfWeek;
 	};
 }
