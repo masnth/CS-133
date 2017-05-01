@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <datetimeapi.h>
+#include <ctime>
 
 using namespace std;
 
@@ -20,18 +21,51 @@ namespace HN_DATETIME {
 	};
 
 	class Date: virtual public Comparable {
+
+
 	public:
 		static const short minYear;;
-		static const std::string startDay;
+		static const short startDOW;
 		static const short MIY;
 		static const short DIW;
 
+		Date(short dayOfMonth, short month, short year); //This is class constructor 
+		
+		bool operator==(const Date &other);
+		bool operator!=(const Date &other);
+		bool operator<(const Date &other);
+		bool operator<=(const Date &other);
+		bool operator>(const Date &other);
+		bool operator>=(const Date &other);
 
-	protected:
-		short year;
-		short month;
-		short dayOfMonth;
-		short dayOfYear;
-		short dayOfWeek;
+		void print(ostream& sout);
+		void input(istream& sin);
+		void setCurrentDate();
+
+		static bool isLeapYear(short year);
+		static short daysInMonth(short month);
+		static string monthNames(short month);
+		static string dayNames(short dayOfWeek);
+
+		Date yesterday();
+		Date tomorrow();
+		
+		short getYear();
+		short getMonth();
+		short getdayOfMonth();
+		short getdayOfYear();
+		short getdayOfWeek();
+
+		void setYear();
+		void setMonth();
+		void setDayofMonth();
+	
+	private:
+		static short countLeaps(short year);
+		void setDayOfYear();
+		void setDayOfWeek();
+
 	};
+
+
 }
